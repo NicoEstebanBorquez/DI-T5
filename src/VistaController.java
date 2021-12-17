@@ -67,7 +67,25 @@ public class VistaController implements Initializable {
 
     @FXML
     private void graficoSectores(ActionEvent event) {
-        System.out.println("sectores");
+        try {
+            //Se define la colección de datos que se usará en el informe
+            JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(lista);
+
+            //Ventana donde se monstrará el informe
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+
+            //Declaración del visor de informes
+            JasperViewerFX viewerfx = new JasperViewerFX(stage, "Gráfico de sectores", "/informes/InformeSectores.jasper",
+                    new HashMap(), beanColDataSource);
+
+            //Se muestra el informe en el visor
+            viewerfx.show();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     @FXML

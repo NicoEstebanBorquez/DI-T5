@@ -62,7 +62,24 @@ public class VistaController implements Initializable {
 
     @FXML
     private void matriculadosDI(ActionEvent event) {
-        System.out.println("maticulados DI");
+        try {
+            //Se define la colección de datos que se usará en el informe
+            JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(lista);
+
+            //Ventana donde se monstrará el informe
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+
+            //Declaración del visor de informes
+            JasperViewerFX viewerfx = new JasperViewerFX(stage, "Informe - Alumnos DI", "/informes/InformeListadoDI.jasper",
+                    new HashMap(), beanColDataSource);
+
+            //Se muestra el informe en el visor
+            viewerfx.show();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
@@ -85,7 +102,6 @@ public class VistaController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
     }
 
     @FXML

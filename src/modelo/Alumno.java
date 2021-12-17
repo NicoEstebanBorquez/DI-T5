@@ -1,6 +1,6 @@
 package modelo;
 
-public class Alumno { //implements Comparable<Pedido>
+public class Alumno implements Comparable<Alumno>{ 
 
     private String DNI;
     private String modulo;
@@ -49,10 +49,10 @@ public class Alumno { //implements Comparable<Pedido>
         this.provincia = provincia;
     }
 
-    /*
+    
     @Override
-    public int compareTo(Pedido p) {
-        return tipoTarta.compareTo(p.getTipoTarta());
+    public int compareTo(Alumno a) {
+        return modulo.compareTo(a.getModulo());
     }
-    */
+    
 }
